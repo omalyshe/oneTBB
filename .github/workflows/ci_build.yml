@@ -53,8 +53,7 @@ jobs:
           git clone --depth 1 --branch master https://github.com/omalyshe/oneTBB.git onetbb_src
           cd onetbb_src
           mkdir build && cd build
-          cmake -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DCMAKE_CXX_COMPILER=${{ matrix.cxx_compiler }}\ 
-             -DCMAKE_C_COMPILER=${{ matrix.c_compiler }} -DTBB_TEST=OFF -DCMAKE_INSTALL_LIBDIR=lib ..
+          cmake -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DCMAKE_CXX_COMPILER=${{ matrix.cxx_compiler }} -DCMAKE_C_COMPILER=${{ matrix.c_compiler }} -DTBB_TEST=OFF -DCMAKE_INSTALL_LIBDIR=lib ..
           make VERBOSE=1 -j${BUILD_CONCURRENCY} 
           cpack
           cp tbb-*.zip ${GITHUB_WORKSPACE}
