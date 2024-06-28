@@ -15,15 +15,15 @@
 name: oneTBB CI
 
 on:
-  push:
-    branches: [master]
+#  push:
+#    branches: [master]
 
-  pull_request:
-    branches: [master]
-    types:
-      - opened
-      - synchronize
-      - reopened
+#  pull_request:
+#    branches: [master]
+#    types:
+#      - opened
+#      - synchronize
+#      - reopened
 
 permissions: read-all
 
