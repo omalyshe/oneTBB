@@ -39,10 +39,13 @@ jobs:
       matrix:
         include:
           - cxx_compiler: g++
+            c_compiler: gcc
             build_type: relwithdebinfo
           - cxx_compiler: g++
+            c_compiler: gcc
             build_type: release
           - cxx_compiler: g++
+            c_compiler: gcc
             build_type: debug
     steps:
       - uses: actions/checkout@v2
