@@ -58,6 +58,6 @@ jobs:
           cp tbb-*.zip ${GITHUB_WORKSPACE}
       - name: Package attestation
         uses: actions/attest-build-provenance@v1.3.2
-          with:
-            subject-path: ./tbb-*.zip
+        with:
+          subject-path: ./tbb-*.zip
 
