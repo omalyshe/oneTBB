@@ -38,9 +38,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Configure
-        run: |
-          mkdir build
-          cmake 
+        run: mkdir build
+        run: cmake 
               -DCMAKE_CXX_STANDARD=20 
               -DCMAKE_BUILD_TYPE=relwithdebinfo 
               -DCMAKE_CXX_COMPILER=g++ 
