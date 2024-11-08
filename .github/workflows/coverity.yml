@@ -36,14 +36,13 @@ jobs:
     name: Coverity Linux
     runs-on: [ubuntu-latest]
     steps:
-      - uses: actions/checkout@v4
-      - name: Configure
-        run: mkdir build
-      - name: Run Coverity scan
-        - uses: vapier/coverity-scan-action@v1
-          with:
-            token: ${{ secrets.COVERITY_TOKEN }}
-            email: ${{ secrets.COVERITY_EMAIL }}
-            project: ${{env: COVERITY_PROJECT }}
-            command: make VERBOSE=1 -j${BUILD_CONCURRENCY}
+    - uses: actions/checkout@v4
+    - name: Configure
+      run: mkdir build
+    - uses: vapier/coverity-scan-action@v1
+      with:
+        token: ${{ secrets.COVERITY_TOKEN }}
+        email: ${{ secrets.COVERITY_EMAIL }}
+        project: ${{env: COVERITY_PROJECT }}
+        command: make VERBOSE=1 -j${BUILD_CONCURRENCY}
 #        run: cmake -DCMAKE_CXX_STANDARD=20 -DCMAKE_BUILD_TYPE=relwithdebinfo -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc -DTBB_CPF=ON -B ${{GITHUB_WORKSPACE}}/build
