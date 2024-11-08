@@ -71,4 +71,3 @@ jobs:
           name: ${{ github.job }}
           path: coverity-int.tgz
           retention-days: 2
- 1
