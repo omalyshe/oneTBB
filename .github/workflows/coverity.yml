@@ -51,9 +51,9 @@ jobs:
           mkdir build && cd build
           cmake -DCMAKE_CXX_STANDARD=20 -DCMAKE_BUILD_TYPE=relwithdebinfo \
             -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc -DTBB_CPF=ON ..
-          cov-build --dir cov-int make VERBOSE=1 -j${BUILD_CONCURRENCY}
+          cov-build --dir cov-int make VERBOSE=1 -j${{env.BUILD_CONCURRENCY}}
       - name: Archive Coverity build results
-        run: tar -czvf cov-int.tgz cov-int
+        run: tar -czvf cov-int.tgz build/cov-int
       - name: Submit Coverity results for analysis
         run: |
           echo GITHUB_SHA_SHORT=${GITHUB_SHA::8} >> $GITHUB_ENV
