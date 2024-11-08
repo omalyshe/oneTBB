@@ -28,7 +28,7 @@ on:
 #permissions: write-all
 
 env:
-  BUILD_CONCURRENCY: 2
+  BUILD_CONCURRENCY: 8
   COVERITY_PROJECT: oneapi-src%2FoneTBB
 
 jobs:
