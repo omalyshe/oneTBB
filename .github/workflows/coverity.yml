@@ -38,8 +38,9 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Configure
-      run: mkdir build
-      run: cmake -DCMAKE_CXX_STANDARD=20 -DCMAKE_BUILD_TYPE=relwithdebinfo -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc -DTBB_CPF=ON -B ${{GITHUB_WORKSPACE}}/build
+      run: |
+        mkdir build
+        cmake -DCMAKE_CXX_STANDARD=20 -DCMAKE_BUILD_TYPE=relwithdebinfo -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc -DTBB_CPF=ON -B ${{GITHUB_WORKSPACE}}/build
     - uses: vapier/coverity-scan-action@v1
       with:
         token: ${{ secrets.COVERITY_TOKEN }}
