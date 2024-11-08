@@ -46,4 +46,4 @@ jobs:
         token: ${{ secrets.COVERITY_TOKEN }}
         email: ${{ secrets.COVERITY_EMAIL }}
         project: ${{env.COVERITY_PROJECT }}
-        command: make VERBOSE=1 -j${BUILD_CONCURRENCY}
+        command: make VERBOSE=1 -j${BUILD_CONCURRENCY} ${GITHUB_WORKSPACE}/build
