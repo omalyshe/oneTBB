@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Allocator label
 allocator:
 - changed-files:
   - any-glob-to-any-file: ['src/tbbmalloc/**/*', 'src/tbbmalloc_proxy/**/*', 'test/tbbmalloc/**/*']
