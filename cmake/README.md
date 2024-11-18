@@ -10,6 +10,7 @@ TBB_SANITIZE:STRING - Sanitizer parameter, passed to compiler/linker
 TBB_SIGNTOOL:FILEPATH - Tool for digital signing, used in post-install step for libraries if provided.
 TBB_SIGNTOOL_ARGS:STRING - Additional arguments for TBB_SIGNTOOL, used if TBB_SIGNTOOL is set.
 TBB_BUILD:BOOL - Enable Intel(R) oneAPI Threading Building Blocks (oneTBB) build (ON by default)
+TBB_FIND_PACKAGE - Enable search for external oneTBB using find_package instead of build from sources (OFF by default)
 TBBMALLOC_BUILD:BOOL - Enable Intel(R) oneAPI Threading Building Blocks (oneTBB) memory allocator build (ON by default)
 TBBMALLOC_PROXY_BUILD:BOOL - Enable Intel(R) oneAPI Threading Building Blocks (oneTBB) memory allocator proxy build (requires TBBMALLOC_BUILD. ON by default)
 TBB4PY_BUILD:BOOL - Enable Intel(R) oneAPI Threading Building Blocks (oneTBB) Python module build (OFF by default)
@@ -20,6 +21,8 @@ TBB_VALGRIND_MEMCHECK:BOOL - Enable scan for memory leaks using Valgrind (OFF by
 TBB_DISABLE_HWLOC_AUTOMATIC_SEARCH - Disable HWLOC automatic search by pkg-config tool (OFF by default)
 TBB_ENABLE_IPO - Enable Interprocedural Optimization (IPO) during the compilation (ON by default)
 TBB_BUILD_APPLE_FRAMEWORKS - Enable the Apple* frameworks instead of dylibs, only available on the Apple platform. (OFF by default)
+TBB_FILE_TRIM - Enable __FILE__ trim, replace a build-time full path with a relative path in the debug info and macro __FILE__; use it to make
+           reproducible location-independent builds (ON by default)
 ```
 
 ## Configure, Build, and Test

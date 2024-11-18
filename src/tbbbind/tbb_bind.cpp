@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2019-2023 Intel Corporation
+    Copyright (c) 2019-2024 Intel Corporation
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -88,12 +88,15 @@ private:
         if ( hwloc_topology_init( &topology ) == 0 ) {
             initialization_state = topology_allocated;
 #if __TBBBIND_HWLOC_TOPOLOGY_FLAG_RESTRICT_TO_CPUBINDING_PRESENT
-            if ( groups_num == 1 &&
-                 hwloc_topology_set_flags(topology,
-                     HWLOC_TOPOLOGY_FLAG_IS_THISSYSTEM |
-                     HWLOC_TOPOLOGY_FLAG_RESTRICT_TO_CPUBINDING
-                 ) != 0
-            ) {
+            unsigned long flags = 0;
+            if (groups_num > 1) {
+                // HWLOC x86 backend might interfere with process affinity mask on
+                // Windows systems with multiple processor groups.
+                flags = HWLOC_TOPOLOGY_FLAG_DONT_CHANGE_BINDING;
+            } else {
+                flags = HWLOC_TOPOLOGY_FLAG_IS_THISSYSTEM | HWLOC_TOPOLOGY_FLAG_RESTRICT_TO_CPUBINDING;
+            }
+            if (hwloc_topology_set_flags(topology, flags) != 0) {
                 return;
             }
 #endif
@@ -525,7 +528,7 @@ TBBBIND_EXPORT int __TBB_internal_get_default_concurrency(int numa_id, int core_
     return system_topology::instance().get_default_concurrency(numa_id, core_type_id, max_threads_per_core);
 }
 
-void __TBB_internal_destroy_system_topology() {
+TBBBIND_EXPORT void __TBB_internal_destroy_system_topology() {
     return system_topology::destroy();
 }
 
