@@ -159,7 +159,7 @@ jobs:
             std: 14
             build_type: relwithdebinfo
             preview: 'OFF'
-          - os: ubuntu-20.04
+          - os: ubuntu-24.04
             c_compiler: gcc
             cxx_compiler: g++
             std: 17
